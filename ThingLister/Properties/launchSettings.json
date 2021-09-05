@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ThingLister": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Utente\\source\\repos\\CuteGame"
+    }
+  }
+}

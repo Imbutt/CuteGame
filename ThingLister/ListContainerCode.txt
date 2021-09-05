@@ -1,0 +1,20 @@
+//StartUsing
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CuteGame.Objects.Helper
+{
+    public class ThingListContainer
+    {
+        public SpyGame Game { get; private set; }
+
+        // Auto generated dictionary, do not touch
+        public Dictionary<string, Type> ThingsDict { get; private set; } = new Dictionary<string, Type>()
+        {
+            //StartDict
+        };
+
+
+    }
+}

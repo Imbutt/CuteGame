@@ -1,0 +1,1047 @@
+{
+	"__header__": {
+		"fileType": "LDtk Project JSON",
+		"app": "LDtk",
+		"doc": "https://ldtk.io/json",
+		"schema": "https://ldtk.io/files/JSON_SCHEMA.json",
+		"appAuthor": "Sebastien 'deepnight' Benard",
+		"appVersion": "0.9.3",
+		"url": "https://ldtk.io"
+	},
+	"jsonVersion": "0.9.3",
+	"nextUid": 20,
+	"worldLayout": "Free",
+	"worldGridWidth": 256,
+	"worldGridHeight": 256,
+	"defaultPivotX": 0,
+	"defaultPivotY": 0,
+	"defaultGridSize": 32,
+	"defaultLevelWidth": 256,
+	"defaultLevelHeight": 256,
+	"bgColor": "#40465B",
+	"defaultLevelBgColor": "#696A79",
+	"minifyJson": false,
+	"externalLevels": false,
+	"exportTiled": false,
+	"imageExportMode": "None",
+	"pngFilePattern": null,
+	"backupOnSave": false,
+	"backupLimit": 10,
+	"levelNamePattern": "Level_%idx",
+	"flags": [],
+	"defs": { "layers": [
+		{
+			"__type": "Entities",
+			"identifier": "Battle_UI",
+			"type": "Entities",
+			"uid": 7,
+			"gridSize": 16,
+			"displayOpacity": 1,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"autoTilesetDefUid": null,
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": null,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		},
+		{
+			"__type": "Entities",
+			"identifier": "Characters",
+			"type": "Entities",
+			"uid": 10,
+			"gridSize": 32,
+			"displayOpacity": 1,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"autoTilesetDefUid": null,
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": null,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		},
+		{
+			"__type": "Tiles",
+			"identifier": "Tiles",
+			"type": "Tiles",
+			"uid": 6,
+			"gridSize": 32,
+			"displayOpacity": 1,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"requiredTags": [],
+			"excludedTags": [],
+			"intGridValues": [{ "value": 1, "identifier": null, "color": "#000000" }],
+			"autoTilesetDefUid": null,
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": 3,
+			"tilePivotX": 0,
+			"tilePivotY": 0
+		}
+	], "entities": [
+		{
+			"identifier": "IconTile",
+			"uid": 2,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#94D9B3",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 3,
+			"tileId": 0,
+			"tileRenderMode": "Stretch",
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "ICONTYPE",
+					"__type": "LocalEnum.ICONTYPE",
+					"uid": 9,
+					"type": { "id": "F_Enum", "params": [8] },
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Center",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null
+				}
+			]
+		},
+		{
+			"identifier": "DiceSlot",
+			"uid": 15,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#94D9B3",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 3,
+			"tileId": 0,
+			"tileRenderMode": "Stretch",
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "X",
+					"__type": "Int",
+					"uid": 18,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Center",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Float", "params": [0] },
+					"textLanguageMode": null
+				},
+				{
+					"identifier": "Y",
+					"__type": "Int",
+					"uid": 19,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "ValueOnly",
+					"editorDisplayPos": "Center",
+					"editorAlwaysShow": false,
+					"editorCutLongValues": true,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [0] },
+					"textLanguageMode": null
+				}
+			]
+		},
+		{
+			"identifier": "EntityAlly",
+			"uid": 11,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#32B46C",
+			"renderMode": "Rectangle",
+			"showName": true,
+			"tilesetId": null,
+			"tileId": null,
+			"tileRenderMode": "FitInside",
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": []
+		},
+		{
+			"identifier": "EntityEnemy",
+			"uid": 12,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#B20D16",
+			"renderMode": "Rectangle",
+			"showName": true,
+			"tilesetId": null,
+			"tileId": null,
+			"tileRenderMode": "FitInside",
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": []
+		},
+		{
+			"identifier": "DiceTile",
+			"uid": 14,
+			"tags": [],
+			"width": 32,
+			"height": 32,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#94D9B3",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 13,
+			"tileId": 35,
+			"tileRenderMode": "FitInside",
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": []
+		}
+	], "tilesets": [
+		{
+			"__cWid": 30,
+			"__cHei": 30,
+			"identifier": "IconTile",
+			"uid": 3,
+			"relPath": "../../../../AESPR/battleuiTilemaps.png",
+			"pxWid": 960,
+			"pxHei": 960,
+			"tileGridSize": 32,
+			"spacing": 0,
+			"padding": 0,
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": {
+				"opaqueTiles": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+				"averageColors": "fddd27b32e002a82749a200020002000200009d50a110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+			}
+		},
+		{
+			"__cWid": 6,
+			"__cHei": 6,
+			"identifier": "Dice_tileset",
+			"uid": 13,
+			"relPath": "../../../../AESPR/dice tileset.png",
+			"pxWid": 377,
+			"pxHei": 377,
+			"tileGridSize": 60,
+			"spacing": 3,
+			"padding": 1,
+			"tagsSourceEnumUid": null,
+			"enumTags": [],
+			"customData": [],
+			"savedSelections": [],
+			"cachedPixelData": {
+				"opaqueTiles": "111111111111111111111111111111111111",
+				"averageColors": "fc66fc66fc66fc66fb66fb66fcb5fbb5fba5fba5fba5faa5f5a8f5a8f5a8f5a8f5a7f597f69ef69df69df69df58cf58cfd6dfd6dfd6dfc6cfc6cfc5cfaaafaaafaaafaaafaaaf999"
+			}
+		}
+	], "enums": [{ "identifier": "ICONTYPE", "uid": 8, "values": [
+		{ "id": "HEAL", "tileId": 1, "color": 7389748, "__tileSrcRect": [32,0,32,32] },
+		{ "id": "EXIT", "tileId": 2, "color": 15927304, "__tileSrcRect": [64,0,32,32] },
+		{ "id": "ATTACK", "tileId": 3, "color": 10650663, "__tileSrcRect": [96,0,32,32] },
+		{ "id": "DEFEND", "tileId": 4, "color": 4691887, "__tileSrcRect": [128,0,32,32] }
+	], "iconTilesetUid": 3, "externalRelPath": null, "externalFileChecksum": null }], "externalEnums": [], "levelFields": [] },
+	"levels": [
+		{
+			"identifier": "Level_0",
+			"uid": 0,
+			"worldX": 0,
+			"worldY": -32,
+			"pxWid": 800,
+			"pxHei": 480,
+			"__bgColor": "#696A79",
+			"bgColor": null,
+			"useAutoIdentifier": true,
+			"bgRelPath": null,
+			"bgPos": null,
+			"bgPivotX": 0.5,
+			"bgPivotY": 0.5,
+			"__bgPos": null,
+			"externalRelPath": null,
+			"fieldInstances": [],
+			"layerInstances": [
+				{
+					"__identifier": "Battle_UI",
+					"__type": "Entities",
+					"__cWid": 50,
+					"__cHei": 30,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"levelId": 0,
+					"layerDefUid": 7,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGrid": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 9522485,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "DiceTile",
+							"__grid": [15,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [240,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [18,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [288,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [21,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [336,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [24,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [384,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [27,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [432,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [30,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [480,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [22,5],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [352,80],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 1,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [1] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [25,8],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [400,128],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 2,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [2] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [19,8],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [304,128],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 2,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [2] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 2,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [2] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [28,11],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [448,176],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 5,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [5] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [16,11],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [256,176],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 1,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [1] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [19,14],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [304,224],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								},
+								{ "__identifier": "Y", "__value": 0, "__type": "Int", "defUid": 19, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [25,14],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [400,224],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [22,17],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [352,272],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 5,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [5] }]
+								},
+								{ "__identifier": "Y", "__value": 0, "__type": "Int", "defUid": 19, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [22,11],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [352,176],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								},
+								{ "__identifier": "Y", "__value": 0, "__type": "Int", "defUid": 19, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [22,8],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [352,128],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 2,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [2] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [25,11],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [400,176],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [19,11],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [304,176],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 2,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [2] }]
+								},
+								{
+									"__identifier": "Y",
+									"__value": 3,
+									"__type": "Int",
+									"defUid": 19,
+									"realEditorValues": [{ "id": "V_Int", "params": [3] }]
+								}
+							]
+						},
+						{
+							"__identifier": "DiceSlot",
+							"__grid": [22,14],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 3, "srcRect": [0,0,32,32] },
+							"width": 32,
+							"height": 32,
+							"defUid": 15,
+							"px": [352,224],
+							"fieldInstances": [
+								{
+									"__identifier": "X",
+									"__value": 4,
+									"__type": "Int",
+									"defUid": 18,
+									"realEditorValues": [{ "id": "V_Int", "params": [4] }]
+								},
+								{ "__identifier": "Y", "__value": 0, "__type": "Int", "defUid": 19, "realEditorValues": [] }
+							]
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [33,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [528,368],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "DiceTile",
+							"__grid": [12,23],
+							"__pivot": [0,0],
+							"__tile": { "tilesetUid": 13, "srcRect": [316,316,60,60] },
+							"width": 32,
+							"height": 32,
+							"defUid": 14,
+							"px": [192,368],
+							"fieldInstances": []
+						}
+					]
+				},
+				{
+					"__identifier": "Characters",
+					"__type": "Entities",
+					"__cWid": 25,
+					"__cHei": 15,
+					"__gridSize": 32,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"levelId": 0,
+					"layerDefUid": 10,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGrid": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 3542937,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [5,9],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [160,288],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [3,5],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [96,160],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [3,9],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [96,288],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [5,7],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [160,224],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [5,5],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [160,160],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [1,8],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [32,256],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [3,7],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [96,224],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [3,3],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [96,96],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [5,3],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [160,96],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityAlly",
+							"__grid": [1,4],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 11,
+							"px": [32,128],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [19,3],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [608,96],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [19,5],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [608,160],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [19,7],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [608,224],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [19,9],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [608,288],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [21,3],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [672,96],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [21,5],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [672,160],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [21,7],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [672,224],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [21,9],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [672,288],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [23,4],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [736,128],
+							"fieldInstances": []
+						},
+						{
+							"__identifier": "EntityEnemy",
+							"__grid": [23,8],
+							"__pivot": [0,0],
+							"__tile": null,
+							"width": 32,
+							"height": 32,
+							"defUid": 12,
+							"px": [736,256],
+							"fieldInstances": []
+						}
+					]
+				},
+				{
+					"__identifier": "Tiles",
+					"__type": "Tiles",
+					"__cWid": 25,
+					"__cHei": 15,
+					"__gridSize": 32,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": 3,
+					"__tilesetRelPath": "../../../../AESPR/battleuiTilemaps.png",
+					"levelId": 0,
+					"layerDefUid": 6,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGrid": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 9790767,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				}
+			],
+			"__neighbours": []
+		}
+	]
+}
