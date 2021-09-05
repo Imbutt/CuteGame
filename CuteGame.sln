@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuteGame", "CuteGame\CuteGame.csproj", "{1C9E092D-978B-4F42-A20D-0A2547E8B67E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGame LDtk Importer", "MonoGame-LDtk-Importer\MonoGame LDtk Importer\MonoGame LDtk Importer.csproj", "{30A2BBE1-708D-47F6-8018-505E43E18D5F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThingLister", "ThingLister\ThingLister.csproj", "{63826DBA-0F35-4370-A6A2-EDDA64D59E91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGame LDtk Importer", "MonoGame-LDtk-Importer\MonoGame LDtk Importer\MonoGame LDtk Importer.csproj", "{7E34F369-C5CD-45C0-A5DB-5D35F1738B72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{1C9E092D-978B-4F42-A20D-0A2547E8B67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9E092D-978B-4F42-A20D-0A2547E8B67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9E092D-978B-4F42-A20D-0A2547E8B67E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30A2BBE1-708D-47F6-8018-505E43E18D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30A2BBE1-708D-47F6-8018-505E43E18D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30A2BBE1-708D-47F6-8018-505E43E18D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30A2BBE1-708D-47F6-8018-505E43E18D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63826DBA-0F35-4370-A6A2-EDDA64D59E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{63826DBA-0F35-4370-A6A2-EDDA64D59E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63826DBA-0F35-4370-A6A2-EDDA64D59E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63826DBA-0F35-4370-A6A2-EDDA64D59E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E34F369-C5CD-45C0-A5DB-5D35F1738B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E34F369-C5CD-45C0-A5DB-5D35F1738B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E34F369-C5CD-45C0-A5DB-5D35F1738B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E34F369-C5CD-45C0-A5DB-5D35F1738B72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,9 @@
 [submodule "MonoGame"]
 	path = MonoGame
 	url = https://github.com/MonoGame/MonoGame
+[submodule "LDtkMonogame"]
+	path = LDtkMonogame
+	url = https://github.com/IrishBruse/LDtkMonogame
+[submodule "MonoGame-LDtk-Importer"]
+	path = MonoGame-LDtk-Importer
+	url = https://github.com/realBoubli/MonoGame-LDtk-Importer

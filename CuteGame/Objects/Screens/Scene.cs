@@ -44,22 +44,6 @@ namespace CuteGame.Objects.Screens
 
         public void LoadLdtkScene(string levelName, Dictionary<string, object> objectDict)
         {
-            /*
- *     public enum FieldType
-{
-Int,
-Float,
-Bool,
-String,
-Enum,
-Color,
-Point,
-FilePath
-}
-*/
-
-
-            // TODO WARN OMG: ldtk "Array" compatability
             this.ldtkLevel = this.Game.ldtkProject.GetLevelByIdentifier(levelName);
             List<Layer> entityLayerList = this.ldtkLevel.GetLayersByType(LayerType.Entities);
 
