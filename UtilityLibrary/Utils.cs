@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ThingLister
+namespace UtilityLibrary
 {
-    public static class Utils
+    public class Utils
     {
         public static List<string>[] LoadSubDirs(string dir, List<string> filesList, List<string> dirsList, string[]? excludeDirs, string[]? excludeFiles)
         {
@@ -36,7 +36,7 @@ namespace ThingLister
             List<string> dirsList = new List<string>();
 
             string[] subdirectoryEntries = Directory.GetDirectories(folder);
-            
+
             // Load subdirectories
             dirsList.Add(folder);
             dirsList.AddRange(new List<string>(subdirectoryEntries));
@@ -45,7 +45,7 @@ namespace ThingLister
             // Exclude specified directories and files
             dirsList = ExcludeFromList(dirsList, excludeDirs);
             filesList = ExcludeFromList(filesList, excludeFiles);
-            
+
 
             // Load subdirectories of subdirectories...
             foreach (string subdirectory in subdirectoryEntries)
@@ -54,7 +54,7 @@ namespace ThingLister
                 filesList = lists[0];
                 dirsList = lists[1];
             }
-                
+
 
             return new List<string>[] { filesList, dirsList };
         }
@@ -89,6 +89,5 @@ namespace ThingLister
 
             return itemWrite;
         }
-
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UtilityLibrary;
 
 namespace CuteGame.Objects.Helper
 {
@@ -28,6 +29,11 @@ namespace CuteGame.Objects.Helper
 
             return texture;
 
+        }
+
+        public Texture2D GetTexture(AutoCodedFile autoCodedFile)
+        {
+            return this.GetTexture(autoCodedFile.RelativePath);
         }
 
         public void UnloadResources()

@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UtilityLibrary;
 
 namespace CuteGame.Objects.Helper.AutoCoded
 {
+
+	// Auto generated code, do not touch
 	public class EnumListContainer
 	{
 		public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();

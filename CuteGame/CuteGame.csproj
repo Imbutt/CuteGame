@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame-LDtk-Importer\MonoGame LDtk Importer\MonoGame LDtk Importer.csproj" />
+    <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="cd $(SolutionDir)\ThingLister\bin\Debug\netcoreapp3.1&#xD;&#xA;start ThingLister.exe $(SolutionDir)" />

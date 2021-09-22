@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using ThingLister;
 
 using System.Diagnostics;
+using UtilityLibrary;
 
 namespace ResourcesEnumer
 {
@@ -34,9 +35,11 @@ namespace ResourcesEnumer
         public string masterFilesCode;
         public string fileCode;
 
+        public string rootPath;
+
         private void button_BuildEnum_Click(object sender, RoutedEventArgs e)
         {
-            string rootPath = textbox_Directory.Text;
+            rootPath = textbox_Directory.Text + "/Content";
             string[] excludeDirs = new string[] { "bin","obj" };
             string[] excludeFiles = new string[] { "Content.mgcb", "CuteGame.json" };
             Folder mainFolder = new Folder(rootPath, excludeDirs, excludeFiles);
@@ -60,7 +63,8 @@ namespace ResourcesEnumer
             // Write all the code in the .cs file
 
             //File.WriteAllText(@"C:\Users\Utente\Desktop\Nuovo documento di testo.cs", outLines);
-            string codeFile = rootPath + @"\Objects\Helper\AutoCoded\EnumListContainer.cs";
+            string p = rootPath.Replace(@"/Content", "");
+            string codeFile = p + @"\Objects\Helper\AutoCoded\EnumListContainer.cs";
             File.WriteAllText(codeFile, outLines);
         }
 
@@ -88,31 +92,43 @@ namespace ResourcesEnumer
             // Write files
             if (folder.Files.Count > 0)
             {
-                string enumString = masterFilesCode.Replace("ClassId", classId.ToString());
 
-                // Write Enum items
-                string startEnumItem = $"//Enum({classId})";
-                int refEnumItemIndex = enumString.IndexOf(startEnumItem) + startEnumItem.Length;
+                // Write file classes
+                string startEnum = $"//Files({classId})";
+                int refEnumIndex = lines.IndexOf(startEnum) + startEnum.Length;
                 for (int i = 0; i < folder.Files.Count; i++)
                 {
-                    // Write the enum item
-                    string item = $"{folder.Files[i]},";
-                    item = item.Insert(0, "\t");    // Identate
-                    item = item.Replace(" ", "_").Replace(".","_"); // Replace spaces and commas
+                    AutoCodedFile file = folder.Files[i];
 
-                    if (i == folder.Files.Count - 1)    // If it's the last item, remove the comma (,)
-                        item = item.Remove(item.Length - 1);
+                    string fileClassName = file.Name.Replace(" ", "_").Replace(".", "_");
 
-                    // Write the code
-                    enumString = enumString.Insert(refEnumItemIndex, "\n" + item);
-                    refEnumItemIndex += item.Length + 1;
+                    string fileExtension = file.Name.Substring(file.Name.LastIndexOf('.'));
+
+                    string relativePath = file.AbsolutePath
+                        .Replace(this.rootPath, "") // Get only the relative path to the Resources path
+                        .Remove(0,1)
+                        .Replace(fileExtension,""); // Remove the first "\", since monogame does not read it on the first folder
+
+
+                    string fileString = this.fileCode
+                        .Replace("(fileClassName)",fileClassName)
+                        .Replace("(fileName)", file.Name)
+                        .Replace("(filePath)", file.AbsolutePath)
+                        .Replace("(fileRelativePath)",relativePath)
+                        .Replace("(fileExtension)",fileExtension);
+                    fileString = this.Indentate(fileString, nameList.Count + 1);
+
+                    
+                    lines = lines.Insert(refEnumIndex, "\n" + fileString);
+                    /*
+                    enumString = enumString.Insert(refClassItemIndex, "\n" + fileString);
+                    refClassItemIndex += fileString.Length + 1;
+                    */
                 }
 
                 // Write Enum 
-                string startEnum = $"//Files({classId})";
-                int refEnumIndex = lines.IndexOf(startEnum) + startEnum.Length;
-                enumString = this.Indentate(enumString, nameList.Count);
-                lines = lines.Insert(refEnumIndex, "\n" + enumString);
+                
+
 
                 
 

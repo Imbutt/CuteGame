@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ResourcesEnumer
+namespace UtilityLibrary
 {
     public class Folder
     {
         public List<Folder> SubFolders { get; set; } = new List<Folder>();
-        public List<string> Files { get; set; } = new List<string>();
+        public List<AutoCodedFile> Files { get; set; } = new List<AutoCodedFile>();
+
+
         public string FolderPath { get; set; }
         public string Name
         {
@@ -43,7 +45,13 @@ namespace ResourcesEnumer
             for (int i = 0; i < files.Length; i++)
             {
                 if (IsValid(files[i], excludeFiles))
-                    this.Files.Add(Path.GetFileName(files[i]));
+                {
+                    string name = Path.GetFileName(files[i]);
+                    string absolutePath = files[i];
+
+                    this.Files.Add(new AutoCodedFile(name, absolutePath));
+                }
+
             }
 
             // Analyze subfolders
@@ -51,7 +59,7 @@ namespace ResourcesEnumer
             for (int i = 0; i < subDirs.Length; i++)
             {
                 Folder folder = new Folder(subDirs[i]);
-                if(IsValid(folder.Name,excludeDirs))
+                if (IsValid(folder.Name, excludeDirs))
                 {
                     // Continue recursion on found subfolder
                     folder.Analyze(excludeDirs, excludeFiles);
@@ -70,7 +78,7 @@ namespace ResourcesEnumer
         /// <returns></returns>
         public bool IsValid(string name, string[] excludeNames)
         {
-            
+
             bool valid = true;
             for (int i = 0; i < excludeNames.Length; i++)
             {
@@ -92,12 +100,10 @@ namespace ResourcesEnumer
         {
             Folder rootFolder = new Folder(rootPath);
             List<Folder> listFolders = new List<Folder>() { rootFolder };
-            
+
             listFolders.AddRange(rootFolder.Analyze(excludeDirs, excludeFiles));
 
             return listFolders;
         }
     }
-
-
 }

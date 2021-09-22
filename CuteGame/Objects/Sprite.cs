@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UtilityLibrary;
 
 namespace CuteGame.Objects
 {
@@ -25,6 +26,12 @@ namespace CuteGame.Objects
         {
             this.ThingParent = thingParent;
             this.Texture = this.ThingParent.Game.spriteManager.GetTexture(textureResource);
+        }
+
+        public Sprite(Thing thingParent, AutoCodedFile file)
+        {
+            this.ThingParent = thingParent;
+            this.Texture = this.ThingParent.Game.spriteManager.GetTexture(file);
         }
 
         // Drawing
