@@ -35,7 +35,11 @@ namespace CuteGame.Objects.Helper
                 listFontsLoaded.Add(fontResource, texture);
             }
 
+
+
             return texture;
+
+            
 
         }
 

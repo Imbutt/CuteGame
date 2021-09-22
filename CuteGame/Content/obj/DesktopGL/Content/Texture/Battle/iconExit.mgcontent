@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconExit.png</SourceFile>
+  <SourceFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconExit.png</SourceFile>
   <SourceTime>2021-06-27T15:24:20.1583672+02:00</SourceTime>
-  <DestFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Texture/Battle/iconExit.xnb</DestFile>
-  <DestTime>2021-06-27T16:00:45.991723+02:00</DestTime>
+  <DestFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Texture/Battle/iconExit.xnb</DestFile>
+  <DestTime>2021-09-20T18:42:54.3155087+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

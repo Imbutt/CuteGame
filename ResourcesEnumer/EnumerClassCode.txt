@@ -1,0 +1,7 @@
+public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
+public class (ClassName)
+{
+	//Files(ClassId)
+	
+	//Subdirs(ClassId)
+}

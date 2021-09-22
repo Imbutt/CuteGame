@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Audio/jump.wav</SourceFile>
+  <SourceFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Audio/jump.wav</SourceFile>
   <SourceTime>2021-06-11T12:40:41.9659294+02:00</SourceTime>
-  <DestFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Audio/jump.xnb</DestFile>
-  <DestTime>2021-06-11T12:41:14.7147774+02:00</DestTime>
+  <DestFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Audio/jump.xnb</DestFile>
+  <DestTime>2021-09-20T18:42:53.6280299+02:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

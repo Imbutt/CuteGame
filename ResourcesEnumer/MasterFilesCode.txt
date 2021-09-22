@@ -1,0 +1,6 @@
+public Files _Files { get; set; } = new Files();
+public class Files
+{
+	// FileClass(ClassId)
+
+}

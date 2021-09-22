@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CuteGame.Objects.Helper
+namespace CuteGame.Objects.Helper.AutoCoded
 {
     public class ThingListContainer
     {

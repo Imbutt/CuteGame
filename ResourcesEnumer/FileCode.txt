@@ -1,0 +1,7 @@
+public (FileId) _(FileId) { get; set; } = new (FileId)();
+public class (FileId)
+{
+	public string Name { get; set; } = "(FileName)"
+	public string Path { get; set; } = "(FilePath)"
+	public string AbsolutePath { get; set; } = "(FileAbsolutePath)"
+}

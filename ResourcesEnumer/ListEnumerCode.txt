@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CuteGame.Objects.Helper.AutoCoded
+{
+	public class EnumListContainer
+	{
+		public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
+		public class (ClassName)
+		{
+			//Files(ClassId)
+			
+			//Subdirs(ClassId)
+		}
+		
+	}
+
+}

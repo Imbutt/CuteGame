@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Font/Default.spritefont</SourceFile>
+  <SourceFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Font/Default.spritefont</SourceFile>
   <SourceTime>2020-08-10T16:17:28+02:00</SourceTime>
-  <DestFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Font/Default.xnb</DestFile>
-  <DestTime>2021-06-26T11:39:11.7864574+02:00</DestTime>
+  <DestFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Font/Default.xnb</DestFile>
+  <DestTime>2021-09-20T18:42:54.2905969+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

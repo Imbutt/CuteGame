@@ -18,6 +18,7 @@ using CuteGame.Objects.Things.Battle;
 using CuteGame.Objects.Things.Battle.Enemies;
 using MonoGame_LDtk_Importer;
 using System.Linq;
+using CuteGame.Objects.Helper.AutoCoded;
 
 namespace CuteGame
 {
@@ -45,6 +46,7 @@ namespace CuteGame
         public Camera camera;
         public Scene currentScene;
         public ThingListContainer thingListContainer;
+        public EnumListContainer enumListContainer;
 
         public LDtkProject ldtkProject;
 
@@ -76,6 +78,7 @@ namespace CuteGame
             spriteManager = new SpriteManager(this);
 
             thingListContainer = new ThingListContainer();
+            enumListContainer = new EnumListContainer();
 
             gamewindow = Window;
 

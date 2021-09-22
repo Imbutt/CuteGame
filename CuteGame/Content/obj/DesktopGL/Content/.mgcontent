@@ -4,28 +4,28 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Audio/hit.wav</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Audio/jump.wav</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Audio/select.wav</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/DinoSprites_doux.gif</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/floor_1.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Font/Default.spritefont</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/knight_f_idle_anim_f0.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/point.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconAttack.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconBlock.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconExit.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconHeal.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/Battle/iconTile.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f0.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f1.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f2.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f3.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f0.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f1.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f2.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f3.png</File>
-    <File>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/block.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Audio/hit.wav</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Audio/jump.wav</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Audio/select.wav</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/DinoSprites_doux.gif</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/floor_1.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Font/Default.spritefont</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/knight_f_idle_anim_f0.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/point.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconAttack.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconBlock.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconExit.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconHeal.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconTile.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f0.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f1.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f2.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_idle_anim_f3.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f0.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f1.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f2.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f3.png</File>
+    <File>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/block.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

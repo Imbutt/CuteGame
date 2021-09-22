@@ -23,7 +23,7 @@ namespace ThingLister
             filesList.AddRange(new List<string>(Directory.GetFiles(thingsFolder)));
             // Load subdirectories of subdirectories...
             foreach (string subdirectory in subdirectoryEntries)
-                LoadSubDirs(subdirectory, filesList, dirsList);
+                Utils.LoadSubDirs(subdirectory, filesList, dirsList, null, null);
 
 
             // Write in .cs file
@@ -73,26 +73,13 @@ namespace ThingLister
             // Write all the code in the .cs file
 
             //File.WriteAllText(@"C:\Users\Utente\Desktop\Nuovo documento di testo.txt",lines);
-            string codeFile = root + @"\CuteGame\Objects\Helper\ThingListContainer.cs";
+            string codeFile = root + @"\CuteGame\Objects\Helper\AutoCoded\ThingListContainer.cs";
             File.WriteAllText(codeFile, lines);
-        
-        }
-
-        public static void LoadSubDirs(string dir, List<string> filesList, List<string> dirsList)
-        {
-            string[] subdirectoryEntries = Directory.GetDirectories(dir);
-
-            // Save paths
-            filesList.AddRange(new List<string>(Directory.GetFiles(dir)));
-            dirsList.AddRange(new List<string>(subdirectoryEntries));
 
 
-            // Load subdirs
 
-            foreach (string subdirectory in subdirectoryEntries)
-            {
-                LoadSubDirs(subdirectory, filesList,dirsList);
-            }
+            Console.ReadKey();
+
         }
     }
 }
