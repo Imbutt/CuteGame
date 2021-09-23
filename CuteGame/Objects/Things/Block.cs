@@ -8,7 +8,8 @@ namespace CuteGame.Objects.Things
     {
         public Block(SpyGame game) : base(game) 
         {
-            this.Sprite = new Sprite(this, this.Game.enumListContainer._Content._Texture.block_png);
+            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture.block_png);
+            this.CollisionBox = this.GetDefaultCollisionBox();
         }
 
         public override void Update()

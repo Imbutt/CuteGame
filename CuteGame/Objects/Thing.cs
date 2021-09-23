@@ -41,23 +41,26 @@ namespace CuteGame.Objects
         public Sprite Sprite { get; set; }
 
         // Collision
-        public Rectangle CollisionBox
+        public Rectangle CollisionBox { get; set; } // CollisionBox relative to the thing Position.
+        public Rectangle AbsoluteCollisionBox 
         {
-            get
-            {
-                if (this.Sprite != null && this.Sprite.Texture != null)
-                {
-                    return new Rectangle(
-                        (int)this.Position.X - this.Sprite.Texture.Width / 2,
-                        (int)this.Position.Y - this.Sprite.Texture.Height / 2,
-                        this.Sprite.Texture.Width, this.Sprite.Texture.Height);
-                }
-                else
-                    return new Rectangle(0,0,0,0);
-
-
-            }
+            get { return new Rectangle(new Point((int)this.PosX - this.CollisionBox.Width / 2,
+                (int)this.PosY - this.CollisionBox.Height / 2),this.CollisionBox.Size);}
+            private set { } 
         }
+        public Rectangle GetDefaultCollisionBox()
+        {
+            if (this.Sprite != null && this.Sprite.Texture != null)
+            {
+                return new Rectangle(
+                    (int)this.Position.X - this.Sprite.Texture.Width / 2,
+                    (int)this.Position.Y - this.Sprite.Texture.Height / 2,
+                    this.Sprite.Texture.Width, this.Sprite.Texture.Height);
+            }
+            else
+                return new Rectangle(0, 0, 0, 0);
+        }
+
 
         /*
                  private string _spriteResource;
@@ -97,6 +100,8 @@ namespace CuteGame.Objects
         public Thing(SpyGame game)
         {
             Game = game;
+            // Default values
+            this.CollisionBox = this.GetDefaultCollisionBox();
         }
 
         public virtual void Create() { }
@@ -133,7 +138,6 @@ namespace CuteGame.Objects
         {
             if (this.Sprite != null && this.Sprite.Visible)
             {
-                //
                 Game._spriteBatch.Draw(this.Sprite.Texture, this.Position, null, this.Sprite.Color,
                     this.Sprite.Rotation, this.Sprite.Origin, this.Scale * Game.globalScale,
                     this.Sprite.Effect, this.Sprite.Depth);
@@ -146,8 +150,8 @@ namespace CuteGame.Objects
         public void DrawCollisionBox()
         {
             // Draw collision box
-            var sprite = Game.spriteManager.GetTexture("point");
-            Game._spriteBatch.Draw(sprite, CollisionBox, new Color(255, 0, 255, 100));
+            var sprite = Game.resourceManager.GetTexture("point");
+            Game._spriteBatch.Draw(sprite, AbsoluteCollisionBox, new Color(255, 0, 255, 100));
         }
 
         /// <summary>
@@ -206,10 +210,10 @@ namespace CuteGame.Objects
         public bool IsCollidingThing(Thing thing, float plusX, float plusY)
         {
             // Create a rectangle based on the collisionbox of the caller and add its velocity
-            Rectangle RectangleVelocity = new Rectangle(new Point(this.CollisionBox.X + (int)plusX,
-                this.CollisionBox.Y + (int)plusY), CollisionBox.Size);
+            Rectangle RectangleVelocity = new Rectangle(new Point(this.AbsoluteCollisionBox.X + (int)plusX,
+                this.AbsoluteCollisionBox.Y + (int)plusY), AbsoluteCollisionBox.Size);
             // Create a rectangle out of the caller and the thing being checked overlap
-            Rectangle intersect = Rectangle.Intersect(RectangleVelocity, thing.CollisionBox);
+            Rectangle intersect = Rectangle.Intersect(RectangleVelocity, thing.AbsoluteCollisionBox);
 
             // If there's an existing overlapping rectangle add it to the list
             if (intersect.Width > 0 || intersect.Height > 0)
@@ -221,7 +225,7 @@ namespace CuteGame.Objects
         public bool IsClickedDown(MOUSEBUTTON buttonEnum)
         {
             if (this.Game.inputManager.IsMouseButtonDown(buttonEnum) &&
-                this.CollisionBox.Contains(this.Game.inputManager.GetMousePosition()))
+                this.AbsoluteCollisionBox.Contains(this.Game.inputManager.GetMousePosition()))
                 return true;
             else
                 return false;

@@ -31,13 +31,14 @@ namespace CuteGame
         public SpriteBatch _spriteBatch;
         // static class to here
         public GameWindow gamewindow;
-        // recources manager
-        public SoundManager soundManager;
-        public SpriteManager spriteManager;
+        // Managers
+        public ResourceManager resourceManager;
+        public AudioManager audioManager;
+        public InputManager inputManager;
 
         public Drawer drawer;
 
-        public InputManager inputManager;
+        
 
         private bool isFirstUpdate = true;
 
@@ -45,8 +46,12 @@ namespace CuteGame
 
         public Camera camera;
         public Scene currentScene;
+        
+        // Autocoded class containers
         public ThingListContainer thingListContainer;
-        public EnumListContainer enumListContainer;
+        public ResourceContainer resourceContainer;
+
+        
 
         public LDtkProject ldtkProject;
 
@@ -71,14 +76,14 @@ namespace CuteGame
 
         protected override void Initialize()
         {
-
             // Initialize managers
             inputManager = new InputManager(this);
-            soundManager = new SoundManager(this);
-            spriteManager = new SpriteManager(this);
+            resourceManager = new ResourceManager(this);
+            audioManager = new AudioManager(this);
 
+            // Create autocoded class containers
             thingListContainer = new ThingListContainer();
-            enumListContainer = new EnumListContainer();
+            resourceContainer = new ResourceContainer();
 
             gamewindow = Window;
 
@@ -87,8 +92,6 @@ namespace CuteGame
             // Check folder and files
             if (!Directory.Exists(MainPath))
                 Directory.CreateDirectory(MainPath);
-
-
 
 
             base.Initialize();
@@ -195,11 +198,6 @@ namespace CuteGame
         }
 
 
-        public void PlaySong(Song song)
-        {
-            MediaPlayer.Play(song);
-        }
-
         public void ChangeScene(Scene scene)
         {
             // Unload current scene
@@ -210,8 +208,7 @@ namespace CuteGame
             }
 
             // Unload resouces
-            this.spriteManager.UnloadResources();
-            this.soundManager.UnloadResources();
+            this.resourceManager.UnloadResources();
 
             // Load new scene
             this.currentScene = scene;

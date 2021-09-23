@@ -19,19 +19,19 @@ namespace CuteGame.Objects
         {
             this.ThingParent = thingParent;
             this.AnimationTexturesResource = _animationTexturesResource;
-            this.Texture = thingParent.Game.spriteManager.GetTexture(this.AnimationTexturesResource[0]);
+            this.Texture = thingParent.Game.resourceManager.GetTexture(this.AnimationTexturesResource[0]);
         }
 
         public Sprite(Thing thingParent, string textureResource)
         {
             this.ThingParent = thingParent;
-            this.Texture = this.ThingParent.Game.spriteManager.GetTexture(textureResource);
+            this.Texture = this.ThingParent.Game.resourceManager.GetTexture(textureResource);
         }
 
         public Sprite(Thing thingParent, AutoCodedFile file)
         {
             this.ThingParent = thingParent;
-            this.Texture = this.ThingParent.Game.spriteManager.GetTexture(file);
+            this.Texture = this.ThingParent.Game.resourceManager.GetTexture(file);
         }
 
         // Drawing
@@ -41,7 +41,7 @@ namespace CuteGame.Objects
             get => _textureResource;
             set
             {
-                Texture = ThingParent.Game.spriteManager.GetTexture(value);
+                Texture = ThingParent.Game.resourceManager.GetTexture(value);
                 _textureResource = value;
             }
         }
@@ -91,7 +91,7 @@ namespace CuteGame.Objects
             this.AnimationTextures = new Texture2D[stringsResources.Length];
             for (int i = 0; i < stringsResources.Length; i++)
             {
-                this.AnimationTextures[i] = this.ThingParent.Game.spriteManager.GetTexture(stringsResources[i]);
+                this.AnimationTextures[i] = this.ThingParent.Game.resourceManager.GetTexture(stringsResources[i]);
             }
         }
 

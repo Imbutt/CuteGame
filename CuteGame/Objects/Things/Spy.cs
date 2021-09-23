@@ -1,4 +1,5 @@
-﻿using CuteGame.Objects.Helper.Input.InputClasses;
+﻿using CuteGame.Objects.Helper;
+using CuteGame.Objects.Helper.Input.InputClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -12,24 +13,27 @@ namespace CuteGame.Objects.Things
         public InputPlayer Input { get; set; } = new InputPlayer();
         public int Speed { get; set; } = 1;
 
+        public SpriteAnimation MyProperty { get; set; }
+
         public Spy(SpyGame game) : base (game)
         {
-            this.Sprite = new Sprite(this, "knight_f_idle_anim_f0");
+            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
 
+            this.CollisionBox = this.GetDefaultCollisionBox();
             this.CollidesWithTypes.Add(typeof(Block));
         }
 
         // Testing ldtk
         public Spy(SpyGame game,string test) : base(game)
         {
-            this.Sprite = new Sprite(this, "knight_f_idle_anim_f0");
+            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
 
             this.CollidesWithTypes.Add(typeof(Block));
         }
 
         public Spy(SpyGame game, string[] test) : this(game)
         {
-            this.Sprite = new Sprite(this, "knight_f_idle_anim_f0");
+            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
 
             this.CollidesWithTypes.Add(typeof(Block));
 
@@ -53,9 +57,9 @@ namespace CuteGame.Objects.Things
                 vInput = 1;
 
             if (Game.inputManager.IsKeybKeyPressed(Input.Special))
-                Game.soundManager.PlaySoundName("Audio/hit");
+                Game.audioManager.PlaySound("Audio/hit");
             if (Game.inputManager.IsKeybKeyPressed(Input.Jump))
-                Game.soundManager.PlaySoundName("Audio/jump");
+                Game.audioManager.PlaySound("Audio/jump");
 
 
             this.Velocity = new Vector2(hInput * this.Speed, vInput * this.Speed);

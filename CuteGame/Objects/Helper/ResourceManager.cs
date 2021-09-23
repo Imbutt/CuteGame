@@ -1,23 +1,50 @@
 ﻿using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UtilityLibrary;
 
 namespace CuteGame.Objects.Helper
 {
-    public class SoundManager
+    public class ResourceManager
     {
         public SpyGame Game { get; private set; }
 
+        // Loaded Content dictionaries
+        Dictionary<string, Texture2D> listTexturesLoaded = new Dictionary<string, Texture2D>();
         Dictionary<string, SoundEffect> listSoundEffectLoaded = new Dictionary<string, SoundEffect>();
         Dictionary<string, Song> listSongLoaded = new Dictionary<string, Song>();
 
-        public SoundManager(SpyGame game)
+        public ResourceManager(SpyGame game)
         {
             this.Game = game;
         }
 
+        // Textures
+       
+
+        public Texture2D GetTexture(string textureResource)
+        {
+            Texture2D texture;
+
+            if (!listTexturesLoaded.TryGetValue(textureResource, out texture))
+            {
+                texture = Game.Content.Load<Texture2D>(textureResource);
+                listTexturesLoaded.Add(textureResource, texture);
+            }
+
+            return texture;
+
+        }
+
+        public Texture2D GetTexture(AutoCodedFile autoCodedFile)
+        {
+            return this.GetTexture(autoCodedFile.RelativePath);
+        }
+
+        // Sound
         public SoundEffect GetSoundEffect(string soundEffectResource)
         {
             SoundEffect soundEffect;
@@ -28,6 +55,10 @@ namespace CuteGame.Objects.Helper
             }
 
             return soundEffect;
+        }
+        public SoundEffect GetSoundEffect(AutoCodedFile file)
+        {
+            return this.GetSoundEffect(file.Name);
         }
 
         public Song GetSong(string songResource)
@@ -42,29 +73,21 @@ namespace CuteGame.Objects.Helper
             return soundEffect;
         }
 
-        public void PlaySoundName(string soundEffectName)
+        public Song GetSong(AutoCodedFile file)
         {
-            this.GetSoundEffect(soundEffectName).Play();
-        }
-        public void PlaySound(SoundEffect soundEffect)
-        {
-            soundEffect.Play();
+            return this.GetSong(file.Name);
         }
 
-        public void PlaySong(Song song)
-        {
-            Game.PlaySong(song);
-        }
 
-        public void PlaySongName(string songName)
-        {
-            Game.PlaySong(GetSong(songName));
-        }
 
+        /// <summary>
+        /// Clears all the resources dictionaries
+        /// </summary>
         public void UnloadResources()
         {
             this.listSongLoaded.Clear();
             this.listSoundEffectLoaded.Clear();
+            this.listTexturesLoaded.Clear();
         }
     }
 }

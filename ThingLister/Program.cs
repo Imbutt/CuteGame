@@ -9,7 +9,14 @@ namespace ThingLister
     {
         static void Main(string[] args)
         {
-            string root = args[0];
+            // Get the root path and add the spaces
+            string root = String.Empty;
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (i != 0)
+                    root += " ";
+                root += args[i];
+            }
 
             string thingsFolder = root + @"\CuteGame\Objects\Things";
 
@@ -77,9 +84,10 @@ namespace ThingLister
             string codeFile = root + @"\CuteGame\Objects\Helper\AutoCoded\ThingListContainer.cs";
             File.WriteAllText(codeFile, lines);
 
-
-
-            Console.ReadKey();
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                Console.ReadKey();
+            }
 
         }
     }

@@ -46,7 +46,7 @@ namespace CuteGame.Objects.Helper
         public void DrawSprite(string spriteResource, Vector2 position, Color color, float rotation,
             float scale, float depth)
         {
-            Texture2D texture = this.Game.spriteManager.GetTexture(spriteResource);
+            Texture2D texture = this.Game.resourceManager.GetTexture(spriteResource);
 
             Game._spriteBatch.Draw(texture, position, null, color,
                 rotation, new Vector2(texture.Width / 2,texture.Height / 2), scale * Game.globalScale,

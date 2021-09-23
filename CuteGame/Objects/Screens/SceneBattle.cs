@@ -97,7 +97,7 @@ namespace CuteGame.Objects.Screens
         {
             this.ChosenAlly = character;
             this.selectArrow.Position = new Vector2(this.ChosenAlly.PosX, this.ChosenAlly.PosY - 10);
-            this.Game.soundManager.PlaySoundName("Audio/select");
+            this.Game.audioManager.PlaySound("Audio/select");
         }
 
         public void ChooseAction()
