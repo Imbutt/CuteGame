@@ -1,6 +1,7 @@
 public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
 public class (ClassName)
 {
+	this.FilesList = new List<AutoCodedFile>() { .FilesList(ClassId). };
 	//Files(ClassId)
 	
 	//Subdirs(ClassId)

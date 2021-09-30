@@ -10,8 +10,13 @@ namespace CuteGame.Objects.Helper.AutoCoded
 	public class EnumListContainer
 	{
 		public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
-		public class (ClassName)
+		public class (ClassName) : AutoCodedFolder
 		{
+			public (ClassName)()
+            {
+				this.FilesList = new List<AutoCodedFile>() { .FilesList(ClassId). };
+
+            }
 			//Files(ClassId)
 			
 			//Subdirs(ClassId)

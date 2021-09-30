@@ -12,7 +12,10 @@ namespace CuteGame.Objects.Helper
 
         public SpriteAnimation(Folder folder)
         {
+            public SpriteAnimation(Folder folder)
+            {
 
+            }
         }
     }
 }

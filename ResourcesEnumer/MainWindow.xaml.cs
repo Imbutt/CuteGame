@@ -118,6 +118,12 @@ namespace ResourcesEnumer
                         .Replace("(fileExtension)",fileExtension);
                     fileString = this.Indentate(fileString, nameList.Count + 1);
 
+                    // Write in FileList
+                    string fileInList = fileClassName + ','; 
+                    if (i == folder.Files.Count)
+                        fileInList.Remove(fileInList.Length - 1);
+                    lines = lines.Replace(".FilesList(ClassId).",  fileInList);
+
                     
                     lines = lines.Insert(refEnumIndex, "\n" + fileString);
                     /*
