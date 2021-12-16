@@ -7,15 +7,15 @@ namespace CuteGame.Objects.Helper.AutoCoded
 {
 
 	// Auto generated code, do not touch
-	public class EnumListContainer
+	public class ResourceContainer
 	{
 		public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
 		public class (ClassName) : AutoCodedFolder
 		{
 			public (ClassName)()
             {
-				this.FilesList = new List<AutoCodedFile>() { .FilesList(ClassId). };
-
+				this.FilesList = new List<AutoCodedFile>() { /*FilesList(ClassId)*/ };
+				this.FoldersList = new List<AutoCodedFolder>() { /*FoldersList(ClassId)*/ };
             }
 			//Files(ClassId)
 			

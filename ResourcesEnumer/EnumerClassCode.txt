@@ -1,7 +1,12 @@
 public (ClassName) _(ClassName) { get; private set; } = new (ClassName)();
-public class (ClassName)
+public class (ClassName) : AutoCodedFolder
 {
-	this.FilesList = new List<AutoCodedFile>() { .FilesList(ClassId). };
+	public (ClassName)()
+	{
+			this.FilesList = new List<AutoCodedFile>() { /*FilesList(ClassId)*/ };
+			this.FoldersList = new List<AutoCodedFolder>() { /*FoldersList(ClassId)*/ };
+	}
+
 	//Files(ClassId)
 	
 	//Subdirs(ClassId)

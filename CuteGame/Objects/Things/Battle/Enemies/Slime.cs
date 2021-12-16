@@ -1,4 +1,5 @@
-﻿using CuteGame.Objects.Screens;
+﻿using CuteGame.Objects.Helper;
+using CuteGame.Objects.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,10 @@ namespace CuteGame.Objects.Things.Battle.Enemies
     {
         public Slime(SpyGame game, SceneBattle scene) : base(game, scene)
         {
-            string[] anim = new string[] { "Texture/BigDemon/big_demon_idle_anim_f0", "Texture/BigDemon/big_demon_idle_anim_f1"
-                , "Texture/BigDemon/big_demon_idle_anim_f2", "Texture/BigDemon/big_demon_idle_anim_f3"};
+            SpriteAnimation anim = new SpriteAnimation(this.Game,this.Game.resourceContainer._Content._Texture._BigDemon);
             this.Sprite = new Sprite(this,anim);
+
+            this.CollisionBox = this.GetDefaultCollisionBox();
         }
 
 

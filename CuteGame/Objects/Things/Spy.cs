@@ -13,31 +13,20 @@ namespace CuteGame.Objects.Things
         public InputPlayer Input { get; set; } = new InputPlayer();
         public int Speed { get; set; } = 1;
 
-        public SpriteAnimation MyProperty { get; set; }
+        public SpriteAnimation AnimRun { get; set; }
+        public SpriteAnimation AnimIdle { get; set; }
 
         public Spy(SpyGame game) : base (game)
         {
-            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
+            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._Knight._Idle.knight_f_idle_anim_f0_png);
 
             this.CollisionBox = this.GetDefaultCollisionBox();
             this.CollidesWithTypes.Add(typeof(Block));
-        }
 
-        // Testing ldtk
-        public Spy(SpyGame game,string test) : base(game)
-        {
-            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
-
-            this.CollidesWithTypes.Add(typeof(Block));
-        }
-
-        public Spy(SpyGame game, string[] test) : this(game)
-        {
-            this.Sprite = new Sprite(this, this.Game.resourceContainer._Content._Texture._BigDemon.big_demon_idle_anim_f0_png);
-
-            this.CollidesWithTypes.Add(typeof(Block));
-
-
+            this.AnimRun = new SpriteAnimation(this.Game, this.Game.resourceContainer._Content._Texture._Knight._Idle);
+            this.AnimIdle = new SpriteAnimation(this.Game, this.Game.resourceContainer._Content._Texture._Knight._Run);
+            this.AnimRun.Velocity = 0.1f;
+            this.AnimIdle.Velocity = 0.1f;
         }
 
         public override void Update()
@@ -56,6 +45,12 @@ namespace CuteGame.Objects.Things
             if (Game.inputManager.IsKeybKeyDown(Input.Down))
                 vInput = 1;
 
+            // Animation
+            if (hInput != 0 || vInput != 0)
+                this.Sprite.Anim = this.AnimRun;
+            else
+                this.Sprite.Anim = this.AnimIdle;
+
             if (Game.inputManager.IsKeybKeyPressed(Input.Special))
                 Game.audioManager.PlaySound("Audio/hit");
             if (Game.inputManager.IsKeybKeyPressed(Input.Jump))
@@ -64,7 +59,7 @@ namespace CuteGame.Objects.Things
 
             this.Velocity = new Vector2(hInput * this.Speed, vInput * this.Speed);
 
-            this.ApplyCollisions();
+            this.ApplyCollisionsVelocity();
             this.ApplyVelocity(true);
 
             base.Update();

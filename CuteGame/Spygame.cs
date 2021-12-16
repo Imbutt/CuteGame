@@ -45,12 +45,12 @@ namespace CuteGame
         public float globalScale = 1;
 
         public Camera camera;
-        public Scene currentScene;
+        public Scene gameScene;
         
         // Autocoded class containers
         public ThingListContainer thingListContainer;
         public ResourceContainer resourceContainer;
-
+        public Random _random = new Random();
         
 
         public LDtkProject ldtkProject;
@@ -107,11 +107,16 @@ namespace CuteGame
             string path = @"C:\Users\Utente\AppData\Local\Programs\ldtk\project\CuteGame.json";
             ldtkProject = new LDtkProject(path);
 
+            // Resolution and fullscreen
+            _graphics.PreferredBackBufferWidth = 1600;
+            _graphics.PreferredBackBufferHeight = 900;
+            _graphics.ToggleFullScreen();
+
             // camera?
             camera = new Camera(GraphicsDevice.Viewport);
             this.camera.Position = new Vector2(0, 0);
 
-            /*
+
             // Create sample player
             SceneBattle sceneBattle = new SceneBattle(this);
             sceneBattle.listEnemies = new List<BattleCharacter>()
@@ -127,13 +132,14 @@ namespace CuteGame
             };
             ChangeScene(sceneBattle);
 
-            */
+
 
 
 
             // Test scene
-            Scene superNice = new Scene(this,"Test");
-            this.ChangeScene(superNice);
+
+            //Scene superNice = new Scene(this,"Test");
+            //this.ChangeScene(superNice);
         }
 
         protected override void Update(GameTime gameTime)
@@ -142,13 +148,23 @@ namespace CuteGame
             {
                 //this.camera.Position = new Vector2(20,20);
                 isFirstUpdate = false;
+
+
             }
 
             inputManager.UpdateInputStates();
 
-            if (this.currentScene != null)
-                currentScene.Update();
+            // Pre Update
+            if (this.gameScene != null)
+            {
+                //gameScene.PreUpdate();
+            }
+            foreach (Thing instance in listInstances)
+            {
+                instance.PreUpdate();
+            }
 
+            //Update
             this.camera.Update();
 
             // Update event of every instance
@@ -156,6 +172,8 @@ namespace CuteGame
             {
                 instance.Update();
             }
+
+
 
             base.Update(gameTime);
         }
@@ -167,12 +185,28 @@ namespace CuteGame
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
                 SamplerState.PointClamp, null, null,null, camera.Transfrom);
 
-            if (this.currentScene != null)
-                currentScene.Draw();
+            if (this.gameScene != null)
+                gameScene.Draw();
 
             foreach (Thing instance in listInstances)
             {
                 instance.Draw();
+            }
+
+
+            // Post
+            foreach (Thing instance in listInstances)
+            {
+                instance.PostDraw();
+            }
+
+            if (this.gameScene != null)
+                gameScene.PostDraw();
+
+
+            for (int i = 0; i < drawer.DebugStrings.Count; i++)
+            {
+                drawer.DrawStringHud(drawer.DebugStrings[i], new Vector2(10, 15 * i));
             }
 
             _spriteBatch.End();
@@ -198,6 +232,8 @@ namespace CuteGame
         }
 
 
+
+        // Change currentScene to another scene
         public void ChangeScene(Scene scene)
         {
             // Unload current scene
@@ -211,11 +247,11 @@ namespace CuteGame
             this.resourceManager.UnloadResources();
 
             // Load new scene
-            this.currentScene = scene;
-            listInstances.AddRange(currentScene.listInstances);
+            this.gameScene = scene;
+            listInstances.AddRange(gameScene.listInstances);
 
             // Scene method
-            this.currentScene.OnCreate();
+            this.gameScene.OnCreate();
         }
 
 

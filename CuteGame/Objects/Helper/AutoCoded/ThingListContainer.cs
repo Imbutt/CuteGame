@@ -19,12 +19,19 @@ namespace CuteGame.Objects.Helper.AutoCoded
         {
             //StartDict
 			 { "Block", typeof(Block) } ,
+			 { "Button", typeof(Button) } ,
+			 { "Slimee", typeof(Slimee) } ,
 			 { "Spy", typeof(Spy) } ,
 			 { "BattleCharacter", typeof(BattleCharacter) } ,
+			 { "BattleCharTile", typeof(BattleCharTile) } ,
 			 { "ChoseArrow", typeof(ChoseArrow) } ,
 			 { "Knight", typeof(Knight) } ,
 			 { "Slime", typeof(Slime) } ,
+			 { "ActionSlot", typeof(ActionSlot) } ,
+			 { "ActionTile", typeof(ActionTile) } ,
 			 { "ActionUI", typeof(ActionUI) } ,
+			 { "DiceSlot", typeof(DiceSlot) } ,
+			 { "DiceTile", typeof(DiceTile) } ,
 			 { "IconTile", typeof(IconTile) } 
         };
 

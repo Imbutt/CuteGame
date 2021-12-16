@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f0.png</SourceFile>
+  <SourceFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/BigDemon/big_demon_run_anim_f0.png</SourceFile>
   <SourceTime>2019-07-29T09:49:22+02:00</SourceTime>
-  <DestFile>C:/Users/Utente/source/repos/CuteGame/CuteGame/Content/bin/Texture/BigDemon/big_demon_run_anim_f0.xnb</DestFile>
-  <DestTime>2021-06-27T14:28:44.2107985+02:00</DestTime>
+  <DestFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/bin/Texture/BigDemon/big_demon_run_anim_f0.xnb</DestFile>
+  <DestTime>2021-12-10T21:42:12.5614985+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

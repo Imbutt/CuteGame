@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CuteGame.Objects.Helper;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -41,24 +42,16 @@ namespace CuteGame.Objects
         public Sprite Sprite { get; set; }
 
         // Collision
-        public Rectangle CollisionBox { get; set; } // CollisionBox relative to the thing Position.
-        public Rectangle AbsoluteCollisionBox 
+        public Rectangle CollisionBox { get; set; }
+
+        public Rectangle AbsoluteCollisionBox
         {
-            get { return new Rectangle(new Point((int)this.PosX - this.CollisionBox.Width / 2,
-                (int)this.PosY - this.CollisionBox.Height / 2),this.CollisionBox.Size);}
-            private set { } 
-        }
-        public Rectangle GetDefaultCollisionBox()
-        {
-            if (this.Sprite != null && this.Sprite.Texture != null)
+            get
             {
-                return new Rectangle(
-                    (int)this.Position.X - this.Sprite.Texture.Width / 2,
-                    (int)this.Position.Y - this.Sprite.Texture.Height / 2,
-                    this.Sprite.Texture.Width, this.Sprite.Texture.Height);
+                return new Rectangle(new Point((int)this.PosX - this.CollisionBox.Width / 2,
+              (int)this.PosY - this.CollisionBox.Height / 2), this.CollisionBox.Size);
             }
-            else
-                return new Rectangle(0, 0, 0, 0);
+            private set { }
         }
 
 
@@ -105,18 +98,27 @@ namespace CuteGame.Objects
         }
 
         public virtual void Create() { }
-        public virtual void UpdatePre() { }
+        public virtual void PreUpdate() { }
         public virtual void Update() 
         {
         }
 
-        public virtual void UpdatePost() { }
+        public virtual void PostUpdate() { }
+
+        public virtual void PreDraw() { }
 
         public virtual void Draw() 
         {
-            this.DrawCollisionBox();
-            this.DrawSprite();
+            if(this.Sprite != null)
+            {
+                if (this.Sprite.Anim != null)
+                    this.Sprite.UpdateAnimation();
+                this.DrawCollisionBox();
+                this.DrawSprite();
+            }
         }
+
+        public virtual void PostDraw() { }
 
         /// <summary>
         /// Moves the instance to its velocity
@@ -158,7 +160,7 @@ namespace CuteGame.Objects
         /// Applies the collisions, which means if the instance is about to collide with
         /// one of the types listed in the CollidesWithTypes list it will stop
         /// </summary>
-        public void ApplyCollisions()
+        public void ApplyCollisionsVelocity()
         {
             foreach (Type type in CollidesWithTypes)
             {
@@ -168,7 +170,18 @@ namespace CuteGame.Objects
                     this.VelY = 0;
             }
         }
-
+        public Rectangle GetDefaultCollisionBox()
+        {
+            if (this.Sprite != null && this.Sprite.Texture != null)
+            {
+                return new Rectangle(
+                    (int)this.Position.X - this.Sprite.Texture.Width / 2,
+                    (int)this.Position.Y - this.Sprite.Texture.Height / 2,
+                    this.Sprite.Texture.Width, this.Sprite.Texture.Height);
+            }
+            else
+                return new Rectangle(0, 0, 0, 0);
+        }
 
         /// <summary>
         /// Returns the list of the instances the caller is colliding with.
@@ -179,6 +192,21 @@ namespace CuteGame.Objects
         public List<Thing> IsCollidingType(Type thingType)
         {
             return IsCollidingType(thingType,this.VelX,this.VelY);
+        }
+
+        public bool IsCollidingThing(Thing thing, float plusX, float plusY)
+        {
+            // Create a rectangle based on the collisionbox of the caller and add its velocity
+            Rectangle RectangleVelocity = new Rectangle(new Point(this.AbsoluteCollisionBox.X + (int)plusX,
+                this.AbsoluteCollisionBox.Y + (int)plusY), AbsoluteCollisionBox.Size);
+            // Create a rectangle out of the caller and the thing being checked overlap
+            Rectangle intersect = Rectangle.Intersect(RectangleVelocity, thing.AbsoluteCollisionBox);
+
+            // If there's an existing overlapping rectangle add it to the list
+            if (intersect.Width > 0 || intersect.Height > 0)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -207,21 +235,6 @@ namespace CuteGame.Objects
             return thingCollidedList;
         }
 
-        public bool IsCollidingThing(Thing thing, float plusX, float plusY)
-        {
-            // Create a rectangle based on the collisionbox of the caller and add its velocity
-            Rectangle RectangleVelocity = new Rectangle(new Point(this.AbsoluteCollisionBox.X + (int)plusX,
-                this.AbsoluteCollisionBox.Y + (int)plusY), AbsoluteCollisionBox.Size);
-            // Create a rectangle out of the caller and the thing being checked overlap
-            Rectangle intersect = Rectangle.Intersect(RectangleVelocity, thing.AbsoluteCollisionBox);
-
-            // If there's an existing overlapping rectangle add it to the list
-            if (intersect.Width > 0 || intersect.Height > 0)
-                return true;
-            else
-                return false;
-        }
-
         public bool IsClickedDown(MOUSEBUTTON buttonEnum)
         {
             if (this.Game.inputManager.IsMouseButtonDown(buttonEnum) &&
@@ -230,6 +243,7 @@ namespace CuteGame.Objects
             else
                 return false;
         }
+
 
         public bool IsClickedPressed(MOUSEBUTTON buttonEnum)
         {
@@ -242,10 +256,16 @@ namespace CuteGame.Objects
             */
 
             if (this.Game.inputManager.IsMouseButtonPressed(buttonEnum))
-                if(this.CollisionBox.Contains(this.Game.inputManager.GetMousePosition()))
+                if(this.AbsoluteCollisionBox.Contains(this.Game.inputManager.GetMousePosition()))
                 return true;
 
             return false;
+        }
+
+        public void DrawPosition()
+        {
+            this.Game.drawer.DrawString("Font/Default", $"{this.PosX} {this.PosY}",
+new Vector2(this.PosX, this.PosY + 20), Color.White);
         }
 
     }

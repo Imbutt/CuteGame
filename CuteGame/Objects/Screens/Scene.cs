@@ -13,6 +13,7 @@ namespace CuteGame.Objects.Screens
     public class Scene
     {
         public SpyGame Game { get; private set; }
+        public List<Scene> ChildScenes { get; set; }
         public List<Thing> listInstances { get; set; } = new List<Thing>();
         public Level ldtkLevel;
 
@@ -34,13 +35,47 @@ namespace CuteGame.Objects.Screens
 
         }
 
-        public virtual void Update()
-        {
+        //public virtual void PreUpdate() { }
+        public virtual void Update() { }
+        //public virtual void PostUpdate() { }
 
+        public virtual void PreDraw() { }
+        public virtual void Draw(){ }
+        public virtual void PostDraw() { }
+
+
+        /// <summary>
+        /// Load a scene on top of the currentScene
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="scenePos"></param>
+        /// <param name="scale"></param>
+        public void LoadChildScene(Scene scene, Vector2 scenePos, float scale)
+        {
+            int sceneW = 0, sceneH = 0;
+            if (scene.ldtkLevel != null)
+            {
+                sceneW = scene.ldtkLevel.Width;
+                sceneH = scene.ldtkLevel.Height;
+            }
+
+            // Load new scene
+            foreach (Thing thing in scene.listInstances)
+            {
+                Vector2 pos = new Vector2((thing.PosX + scenePos.X - sceneW / 2) * scale,
+                    (thing.PosY + scenePos.Y - sceneH / 2) * scale);
+
+                thing.Scale = thing.Scale * scale;
+                thing.CollisionBox = new Rectangle(new Point(thing.CollisionBox.X, thing.CollisionBox.Y),new Point(thing.CollisionBox.Width / 2, thing.CollisionBox.Height / 2));
+                this.Game.CreateInstance(thing,pos);
+            }
+            
+
+            // Scene method
+            scene.OnCreate();
         }
 
-        public virtual void Draw()
-        { }
+
 
         public void LoadLdtkScene(string levelName, Dictionary<string, object> objectDict)
         {
@@ -167,7 +202,7 @@ namespace CuteGame.Objects.Screens
                                 else
                                     param = paramArray[0];
 
-
+                                #region no clue lol
                                 // fieldValies that are strings and start with "object:(object)" reference the object from the objectDict
                                 /*
                                 if (param.GetType() == typeof(StringField))
@@ -200,20 +235,12 @@ namespace CuteGame.Objects.Screens
                                     param = outParam;
                                 }
                                 */
+                                #endregion
 
                                 inputParamsArr[i + 1] = param;
 
 
                             }
-
-                            // Insert in the first input parameter the game object (since it is used in every "Thing" object)
-                            /*
-                            if (inputParamsArr != null)
-                                inputParamsArr.CopyTo(inputParamsArr, 1);
-                            */
-                            
-
-
 
                         }
 

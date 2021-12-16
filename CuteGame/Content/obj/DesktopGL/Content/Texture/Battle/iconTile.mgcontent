@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/Texture/Battle/iconTile.png</SourceFile>
-  <SourceTime>2021-06-27T15:18:54.7569204+02:00</SourceTime>
+  <SourceTime>2021-12-10T21:42:55.8335782+01:00</SourceTime>
   <DestFile>D:/Users/Andrea/Desktop/progamazore/repos/REPOS 2/CuteGame/CuteGame/Content/bin/DesktopGL/Content/Texture/Battle/iconTile.xnb</DestFile>
-  <DestTime>2021-09-20T18:42:54.3294925+02:00</DestTime>
+  <DestTime>2021-12-10T21:42:58.0209959+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

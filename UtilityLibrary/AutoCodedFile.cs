@@ -22,5 +22,35 @@ namespace UtilityLibrary
         public string AbsolutePath { get; set; }
         public string RelativePath { get; set; }
         public string Extension { get; set; }
+
+        public FileType _FileType 
+        {
+            get
+            {
+                string[] imageExtensions = new string[] { ".bmp", ".dds", ".dib", ".hdr", ".jpg", ".pfm", ".png", ".ppm", ".tga" };
+                string[] audioExtensions = new string[] { ".xap", ".wma", ".mp3", ".wav"};
+                if (Array.Find(imageExtensions, x => x == this.Extension) != null)
+                    return FileType.Texture;
+                else
+                    if (Array.Find(audioExtensions, x => x == this.Extension) != null)
+                    return FileType.Audio;
+                else
+                    if (this.Extension == ".spritefont")
+                    return FileType.Font;
+                else
+                    if (this.Extension == ".fx")
+                    return FileType.Effect;
+
+                return FileType.None;
+            } 
+        }
+        public enum FileType
+        {
+            Texture,
+            Audio,
+            Font,
+            Effect,
+            None
+        }
     }
 }

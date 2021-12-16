@@ -13,11 +13,12 @@ namespace CuteGame.Objects.Screens
         public List<BattleCharacter> listEnemies = new List<BattleCharacter>();
         public List<BattleCharacter> listAllies = new List<BattleCharacter>();
 
-        int allyXPos = -100;
-        int enemyXPos = 100;
+        int allyXPos;
+        int enemyXPos;
 
         int characterYStart = 30;
         int characterYOffset = 15;
+        int tileOffset = 25;
 
         public enum TURN
         {
@@ -42,27 +43,65 @@ namespace CuteGame.Objects.Screens
             this.Game.camera.Position = new Vector2(0, 0);
             this.Game.camera.Zoom = 2;
 
+            // TODO: AAAAAAAAAAAAAAAAA
+            int width = this.Game._graphics.PreferredBackBufferWidth / 4;
+            int height = this.Game._graphics.PreferredBackBufferHeight / 4;
+
+            int tilesXPos = (int)-(width / 1.1f);
+            int tilesYPos = (int)-(height / 1.5f);
+
+
             // Setup arrow (who the player is controlling right now)
             selectArrow = new ChoseArrow(this.Game);
             this.Game.CreateInstance(selectArrow, new Vector2(0, 0));
             targetArrow = new ChoseArrow(this.Game);
             this.Game.CreateInstance(targetArrow, new Vector2(0, 0));
 
-            // Create allies and enemies
-            for (int i = 0; i < listAllies.Count; i++)
+            // Create UI
+            Scene s = new Scene(this.Game);
+            s.LoadLdtkScene("BattleUIScene", new Dictionary<string, object>());
+            
+            //this.LoadChildScene(s,new Vector2(this.Game._graphics.PreferredBackBufferWidth / 2,height),0.5f);
+            this.LoadChildScene(s, new Vector2(0,0), 0.5f);
+
+
+
+            // Create tiles of allies and enemie
+            for (int u = 0; u < 2; u++)
             {
-                this.Game.CreateInstance(listAllies[i],
-                    new Vector2(allyXPos, characterYStart +
-                    (characterYOffset + listAllies[i].Sprite.Texture.Height) * i));
+                // Change for pos and type
+                BattleCharTile.TYPE type;
+                int xPos;
+                int yPos;
+                int dir; // what direction to generate the tiles (1:from left to right, -1: from right to left)
+
+
+                if (u == 0)
+                {
+                    type = BattleCharTile.TYPE.ALLY;
+                    xPos = tilesXPos;
+                    dir = 1;
+                }
+                else
+                {
+                    type = BattleCharTile.TYPE.ENEMY;
+                    xPos = -tilesXPos;
+                    dir = -1;
+                } 
+
+                // generate square of tiles
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        BattleCharTile tile = new BattleCharTile(this.Game, type, new Vector2(i, j));
+                        this.Game.CreateInstance(tile, new Vector2(xPos + (dir * i * (tileOffset + tile.Sprite.Texture.Width))
+                            , tilesYPos + (j * (tileOffset + tile.Sprite.Texture.Width))));
+                    }
+                }
+
             }
 
-            for (int i = 0; i < listEnemies.Count; i++)
-            {
-                listEnemies[i].Rotation = 180;
-                this.Game.CreateInstance(listEnemies[i],
-                    new Vector2(enemyXPos, characterYStart + 
-                    (characterYOffset + listEnemies[i].Sprite.Texture.Height) * i));
-            }
 
             // Create ActionUI
             actionUI = new ActionUI(this.Game,this);
@@ -72,6 +111,8 @@ namespace CuteGame.Objects.Screens
 
             base.OnCreate();
         }
+
+
 
         public override void Update()
         {

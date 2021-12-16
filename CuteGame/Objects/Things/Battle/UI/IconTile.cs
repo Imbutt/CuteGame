@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CuteGame.Objects.Things.Battle.UI
 {
+    // UNUSED
     public class IconTile : Thing
     {
         public enum TYPE
@@ -38,23 +39,26 @@ namespace CuteGame.Objects.Things.Battle.UI
 
             // Get the texture to draw on top of the tile
             tileSpriteDict.TryGetValue(this.TileType, out textureResource);
+
+            this.CollisionBox = this.GetDefaultCollisionBox();
         }
 
         public override void Update()
         {
             base.Update();
 
-           
+            
+
+            if(IsClickedPressed(Helper.InputManager.MOUSEBUTTON.LEFT))
+            {
+                this.Game.audioManager.PlaySound(this.Game.resourceContainer._Content._Audio.hit_wav);
+            }
         }
 
-        public override void Draw()
+        public override void PostDraw()
         {
-            base.Draw();
-            // Draw the texture of its type on top of the tile
-
             Game.drawer.DrawSprite(textureResource, this.Position, Color.White, 0, this.Scale, this.Sprite.Depth - 1);
-
-            
+            base.PostDraw();
         }
     }
 }

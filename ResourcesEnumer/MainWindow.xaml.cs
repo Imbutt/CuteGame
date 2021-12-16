@@ -40,15 +40,15 @@ namespace ResourcesEnumer
         private void button_BuildEnum_Click(object sender, RoutedEventArgs e)
         {
             rootPath = textbox_Directory.Text + "/Content";
-            string[] excludeDirs = new string[] { "bin","obj" };
+            string[] excludeDirs = new string[] { "bin", "obj" };
             string[] excludeFiles = new string[] { "Content.mgcb", "CuteGame.json" };
             Folder mainFolder = new Folder(rootPath, excludeDirs, excludeFiles);
 
             ProjectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             // Read .cs reference file
             string lines = File.ReadAllText(ProjectFolder + "\\ListEnumerCode.txt")
-                .Replace("ClassId",mainFolder.Name)
-                .Replace("(ClassName)",mainFolder.Name);
+                .Replace("ClassId", mainFolder.Name)
+                .Replace("(ClassName)", mainFolder.Name);
 
             // Setup codes
             enumerClassCode = File.ReadAllText(ProjectFolder + "\\EnumerClassCode.txt");
@@ -64,7 +64,7 @@ namespace ResourcesEnumer
 
             //File.WriteAllText(@"C:\Users\Utente\Desktop\Nuovo documento di testo.cs", outLines);
             string p = rootPath.Replace(@"/Content", "");
-            string codeFile = p + @"\Objects\Helper\AutoCoded\EnumListContainer.cs";
+            string codeFile = p + @"\Objects\Helper\AutoCoded\ResourceContainer.cs";
             File.WriteAllText(codeFile, outLines);
         }
 
@@ -87,15 +87,15 @@ namespace ResourcesEnumer
             lines = lines.Insert(SubDirsClassIndex, "\n" + classString);
             */
 
-            
-            
+
+
             // Write files
             if (folder.Files.Count > 0)
             {
 
                 // Write file classes
                 string startEnum = $"//Files({classId})";
-                int refEnumIndex = lines.IndexOf(startEnum) + startEnum.Length;
+
                 for (int i = 0; i < folder.Files.Count; i++)
                 {
                     AutoCodedFile file = folder.Files[i];
@@ -106,25 +106,33 @@ namespace ResourcesEnumer
 
                     string relativePath = file.AbsolutePath
                         .Replace(this.rootPath, "") // Get only the relative path to the Resources path
-                        .Remove(0,1)
-                        .Replace(fileExtension,""); // Remove the first "\", since monogame does not read it on the first folder
+                        .Remove(0, 1)
+                        .Replace(fileExtension, ""); // Remove the first "\", since monogame does not read it on the first folder
 
 
                     string fileString = this.fileCode
-                        .Replace("(fileClassName)",fileClassName)
+                        .Replace("(fileClassName)", fileClassName)
                         .Replace("(fileName)", file.Name)
                         .Replace("(filePath)", file.AbsolutePath)
-                        .Replace("(fileRelativePath)",relativePath)
-                        .Replace("(fileExtension)",fileExtension);
+                        .Replace("(fileRelativePath)", relativePath)
+                        .Replace("(fileExtension)", fileExtension);
                     fileString = this.Indentate(fileString, nameList.Count + 1);
 
+
                     // Write in FileList
-                    string fileInList = fileClassName + ','; 
+
+                    string fileInList = fileClassName + ',';
                     if (i == folder.Files.Count)
                         fileInList.Remove(fileInList.Length - 1);
-                    lines = lines.Replace(".FilesList(ClassId).",  fileInList);
 
-                    
+                    int refStartFileList = lines.IndexOf($"/*FilesList({classId})*/");
+                    lines = lines.Insert(refStartFileList, fileInList);
+
+
+
+
+
+                    int refEnumIndex = lines.IndexOf(startEnum) + startEnum.Length;
                     lines = lines.Insert(refEnumIndex, "\n" + fileString);
                     /*
                     enumString = enumString.Insert(refClassItemIndex, "\n" + fileString);
@@ -133,17 +141,18 @@ namespace ResourcesEnumer
                 }
 
                 // Write Enum 
-                
 
 
-                
 
-                
+
+
+
             }
-            
+
 
             Debug.WriteLine(lines + "\n --------------------------------------------------------------------- \n");
 
+            string foldersListString = string.Empty;
             // Write SubFolders
             for (int i = 0; i < folder.SubFolders.Count; i++)
             {
@@ -155,6 +164,10 @@ namespace ResourcesEnumer
                 // Find "//Subdirs(classId) index"
                 string subdirString = $"Subdirs({classId}";
                 int SubDirsClassIndex = lines.IndexOf(subdirString) + subdirString.Length + 1;
+
+                // Write in FoldersList
+                foldersListString += 
+
                 // Prepare class template and insert it
 
 
@@ -167,7 +180,7 @@ namespace ResourcesEnumer
                 lines = WriteDirClass(ref lines, folder.SubFolders[i], newNameList);
             }
 
-            
+
 
             return lines;
 
@@ -179,7 +192,7 @@ namespace ResourcesEnumer
         /// <param name="_string"></param>
         /// <param name="times"></param>
         /// <returns></returns>
-        public string Indentate(string _string,int times)
+        public string Indentate(string _string, int times)
         {
             string identation = new String('\t', times + 2);
             _string = _string.Replace("\n", "\n" + identation).Insert(0, identation);

@@ -25,7 +25,7 @@ namespace CuteGame.Objects.Helper
 
         public void PlaySound(AutoCodedFile file)
         {
-            this.PlaySound(file.Name);
+            this.PlaySound(file.RelativePath);
         }
 
         public void PlaySound(SoundEffect soundEffect)

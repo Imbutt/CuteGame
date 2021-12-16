@@ -30,6 +30,7 @@ namespace CuteGame.Objects.Things.Battle
         public BattleCharacter(SpyGame game, SceneBattle _sceneBattle) : base(game) 
         {
             this.sceneBattle = _sceneBattle;
+            
         }
 
         public int Health { get; set; } = 10;
@@ -76,9 +77,7 @@ namespace CuteGame.Objects.Things.Battle
             this.Game.drawer.DrawString("Font/Default", this.Health.ToString(),
                 new Vector2(this.PosX, this.PosY + 10), Color.White);
 
-
-            this.Game.drawer.DrawString("Font/Default", $"{this.PosX} {this.PosY}",
-    new Vector2(this.PosX, this.PosY + 20), Color.White);
+            this.DrawPosition();
 
             base.Draw();
         }

@@ -4,22 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UtilityLibrary;
+using CuteGame.Objects.Helper;
 
 namespace CuteGame.Objects
 {
     public class Sprite
     {
         public Thing ThingParent { get; private set; }
+        public SpriteAnimation Anim { get; set; }
 
         public Sprite(Thing thingParent)
         {
             this.ThingParent = thingParent;
         }
-        public Sprite(Thing thingParent, string[] _animationTexturesResource)
+        public Sprite(Thing thingParent, SpriteAnimation spriteanimation)
         {
             this.ThingParent = thingParent;
-            this.AnimationTexturesResource = _animationTexturesResource;
-            this.Texture = thingParent.Game.resourceManager.GetTexture(this.AnimationTexturesResource[0]);
+            this.Anim = spriteanimation;
+            this.Texture = this.Anim.AnimationTextures2D[0];
         }
 
         public Sprite(Thing thingParent, string textureResource)
@@ -66,44 +68,34 @@ namespace CuteGame.Objects
         public SpriteEffects Effect { get; set; } = SpriteEffects.None;
         public Vector2 Origin { get; set; }
         public float Depth { get; set; } = 0;
-
         public bool Visible { get; set; } = true;
 
 
         // Animation
-        public Texture2D[] AnimationTextures { get; private set; }
-        private string[] _animationTexturesResource;
-        public string[] AnimationTexturesResource 
+        public void UpdateAnimation()
         {
-            get { return _animationTexturesResource; }
-            set 
+            if (Anim.Active)
             {
-                _animationTexturesResource = value;
+                float prevFrame = Anim.Frame;
+                Anim.Frame += Anim.Velocity;
 
-                SetAnimationTextures(_animationTexturesResource);
+
+                Anim.CurrentAnimationNumb = Convert.ToInt32(Math.Floor(Anim.Frame));
+
+                if (Anim.CurrentAnimationNumb >= Anim.AnimationTextures2D.Length)
+                {
+                    Anim.CurrentAnimationNumb = 0;
+                    Anim.Frame = 0;
+                }
+                    
+
+                this.Texture = Anim.AnimationTextures2D[Anim.CurrentAnimationNumb];
+
+
             }
-        }
-        public int CurrentAnimationNumb { get; set; }
-        public int AnimationInterval { get; set; }
 
-        public void SetAnimationTextures(string[] stringsResources)
-        {
-            this.AnimationTextures = new Texture2D[stringsResources.Length];
-            for (int i = 0; i < stringsResources.Length; i++)
-            {
-                this.AnimationTextures[i] = this.ThingParent.Game.resourceManager.GetTexture(stringsResources[i]);
-            }
         }
 
-        private void UpdateAnimation()
-        {
-            this.CurrentAnimationNumb++;
-
-            if (this.CurrentAnimationNumb >= AnimationTextures.Length)
-                this.CurrentAnimationNumb = 0;
-
-            this.Texture = this.AnimationTextures[this.CurrentAnimationNumb];
-        }
 
     }
 }

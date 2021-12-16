@@ -19,6 +19,8 @@ namespace CuteGame.Objects.Helper
         public Vector2 RotationOriginDefault { get; private set; } = new Vector2(0, 0);
         public SpriteEffects SpriteEffectsDefault { get; private set; } = SpriteEffects.None;
 
+        public List<string> DebugStrings { get; set; } = new List<string>();
+
         public Drawer(SpyGame game)
         {
             this.Game = game;
@@ -81,6 +83,15 @@ namespace CuteGame.Objects.Helper
         public void DrawStringHud(string text, Vector2 position)
         {
             DrawStringHud(this.FontResourceDefault, text, position, this.ColorDefault, this.ScaleDefault, 10000);
+        }
+
+        /// <summary>
+        /// Adds a string to the list of stuff to easily draw on screen for debug purposes, more on this on Spygame postDraw method
+        /// </summary>
+        /// <param name="text"></param>
+        public void DrawStringDebug(string text)
+        {
+            this.DebugStrings.Add(text);
         }
 
         /// <summary>
