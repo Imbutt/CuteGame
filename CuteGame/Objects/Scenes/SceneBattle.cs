@@ -1,4 +1,4 @@
-﻿using CuteGame.Objects.Screens;
+﻿using CuteGame.Objects.Scenes;
 using CuteGame.Objects.Things.Battle;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using CuteGame.Objects.Things.Battle.UI;
 
-namespace CuteGame.Objects.Screens
+namespace CuteGame.Objects.Scenes
 {
     public class SceneBattle : Scene
     {
@@ -32,6 +32,8 @@ namespace CuteGame.Objects.Screens
         public ChoseArrow selectArrow;
         public ChoseArrow targetArrow;
         public ActionUI actionUI;
+
+        public DiceUI diceUI;
 
         public SceneBattle(SpyGame game) : base(game) 
         {
@@ -59,10 +61,14 @@ namespace CuteGame.Objects.Screens
 
             // Create UI
             Scene s = new Scene(this.Game);
-            s.LoadLdtkScene("BattleUIScene", new Dictionary<string, object>());
-            
+            this.diceUI = new DiceUI(s);
+
+            s.LoadLdtkScene("BattleScene", new Dictionary<string, object>() { {"DiceUI", this.diceUI } });
+
+
             //this.LoadChildScene(s,new Vector2(this.Game._graphics.PreferredBackBufferWidth / 2,height),0.5f);
             this.LoadChildScene(s, new Vector2(0,0), 0.5f);
+            
 
 
 
@@ -70,7 +76,7 @@ namespace CuteGame.Objects.Screens
             for (int u = 0; u < 2; u++)
             {
                 // Change for pos and type
-                BattleCharTile.TYPE type;
+                BattleCharacterTile.TYPE type;
                 int xPos;
                 int yPos;
                 int dir; // what direction to generate the tiles (1:from left to right, -1: from right to left)
@@ -78,13 +84,13 @@ namespace CuteGame.Objects.Screens
 
                 if (u == 0)
                 {
-                    type = BattleCharTile.TYPE.ALLY;
+                    type = BattleCharacterTile.TYPE.ALLY;
                     xPos = tilesXPos;
                     dir = 1;
                 }
                 else
                 {
-                    type = BattleCharTile.TYPE.ENEMY;
+                    type = BattleCharacterTile.TYPE.ENEMY;
                     xPos = -tilesXPos;
                     dir = -1;
                 } 
@@ -94,7 +100,7 @@ namespace CuteGame.Objects.Screens
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        BattleCharTile tile = new BattleCharTile(this.Game, type, new Vector2(i, j));
+                        BattleCharacterTile tile = new BattleCharacterTile(this.Game, type, new Vector2(i, j));
                         this.Game.CreateInstance(tile, new Vector2(xPos + (dir * i * (tileOffset + tile.Sprite.Texture.Width))
                             , tilesYPos + (j * (tileOffset + tile.Sprite.Texture.Width))));
                     }

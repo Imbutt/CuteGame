@@ -7,8 +7,9 @@ using System.Reflection;
 using CuteGame.Objects.Helper;
 using System.Collections;
 using Microsoft.Xna.Framework;
+using CuteGame.Objects.Things.Battle.UI.DiceUIFolder;
 
-namespace CuteGame.Objects.Screens
+namespace CuteGame.Objects.Scenes
 {
     public class Scene
     {
@@ -106,13 +107,37 @@ namespace CuteGame.Objects.Screens
             {
                 foreach (Entity entity in entityLayer.EntityInstances)
                 {
-                    Game.thingListContainer.ThingsDict.TryGetValue(entity.Identifier, out Type entityType);
+                    // Definition of Entity to find the fields in the correct order
+                    // (for some reason the fields in the entity aren't always correctly ordered)
+                    var entityDef = 
+                        this.Game.ldtkProject.Definitions.Entities.Find(x => x.Identifier == entity.DefUid.ToString());
+
+                    Game.thingListContainer.ThingsDict.TryGetValue(entityDef.Identifier, out Type entityType);
 
                     if (entityType == null)
                         throw new Exception($"Object {entity.DefUid}:{entity.Identifier} Type not found ");
 
+
+                    if (entityType == typeof(DiceSlot))
+                        Console.WriteLine("xaaa");
+
+
+
                     ConstructorInfo[] constrArr = entityType.GetConstructors();   // Thing constructors
-                    List<Field> fieldList = entity.FieldInstances;  // LDTK fields
+
+
+                    List<Field> fieldListTemp = entity.FieldInstances;  // LDTK fields
+                    List<FieldDef> fieldDefList = entityDef.FieldDefList;
+
+                    List<Field> fieldList = new List<Field>();  // LDTK fields
+
+                    // Order Fields like FieldDefs
+                    for (int i = 0; i < fieldDefList.Count; i++)
+                    {
+                        fieldList.Add(fieldListTemp.Find(x => x.DefUid == fieldDefList[i].DefUid));
+                    }
+
+
 
                     Tuple<Type, Type> fieldTypeTuple = null;   // Touple of type of every parameter, (Item1: type, Item2: list<type>)
 
@@ -179,7 +204,11 @@ namespace CuteGame.Objects.Screens
                                 */
                                 ArrayList paramArray = null;
 
+                                if (entityType == typeof(DiceSlot))
+                                    Console.WriteLine("aa");
+
                                 // TODO: Using this ugly else if chain right now cause nothing else works eaaaa
+
                                 if (fieldList[i] is IntField)
                                     paramArray = new ArrayList(((IntField)fieldList[i]).Value);
                                 else if (fieldList[i] is FloatField)
@@ -204,37 +233,29 @@ namespace CuteGame.Objects.Screens
 
                                 #region no clue lol
                                 // fieldValies that are strings and start with "object:(object)" reference the object from the objectDict
-                                /*
-                                if (param.GetType() == typeof(StringField))
+                                // CAN'T USE THE object: AND ARRAYS BECAUSE ASS TRASH
+                                if (fieldList[i].GetType() == typeof(StringField) && !fieldList[i].IsArray)
                                 {
                                     // List of object gotten from the list of strings
-                                    List<object> outParam = new List<object>();
+                                        string fieldString = (string)param;
 
-                                    for (int j = 0; j < fieldList.Count; j++)
+                                    if (fieldString.StartsWith("object:"))
                                     {
-                                        string fieldString = ((List<string>)param)[j];
-                                        if (fieldString.StartsWith("object:"))
+                                        int objectIndex = fieldString.IndexOf(':') + 1;
+                                        if (fieldString.Length > objectIndex)
                                         {
-                                            int objectIndex = fieldString.IndexOf(':') + 1;
-                                            if (fieldString.Length > objectIndex)
+                                            string objectName = fieldString.Substring(objectIndex);
+                                            if (objectDict.TryGetValue(objectName, out object objectInstance))
                                             {
-                                                string objectName = fieldString.Substring(objectIndex);
-                                                if (objectDict.TryGetValue(objectName, out object objectInstance))
-                                                {
-                                                    outParam.Add(objectInstance);
-                                                }
-                                                else
-                                                    throw new Exception($"Object {entity.DefUid}:{entity.Identifier} unfound object reference");
+                                                param = objectInstance;
                                             }
-
+                                            else
+                                                throw new Exception($"Object {entity.DefUid}:{entity.Identifier} unfound object reference");
                                         }
-                                        else
-                                            outParam.Add(fieldString);
                                     }
 
-                                    param = outParam;
                                 }
-                                */
+
                                 #endregion
 
                                 inputParamsArr[i + 1] = param;
@@ -248,10 +269,18 @@ namespace CuteGame.Objects.Screens
                         Thing thing = (Thing)Activator.CreateInstance(entityType, inputParamsArr);
                         thing.Position = entity.Coordinates;
                         this.listInstances.Add(thing);
-
-
                     }
-                    else throw new Exception("No constructor found");
+                    else
+                    {
+                        // Can't find a constructor for the Thing instance: throw error message
+                        string errorString = $"No constructor found for the thing type {constrArr.First().DeclaringType} with the fields";
+                        for (int i = 0; i < fieldList.Count; i++)
+                        {
+                            var f = fieldList[i];
+                            errorString += $"\nField({i}) Type: {f.Type.ToString()} Name:{f.Identifier}";
+                        }
+                        throw new Exception(errorString);
+                    }
 
 
 

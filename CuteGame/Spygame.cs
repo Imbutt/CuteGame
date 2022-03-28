@@ -1,7 +1,7 @@
 ﻿using CuteGame.Objects;
 using CuteGame.Objects.Helper;
 using CuteGame.Objects.Helper.Input.InputClasses;
-using CuteGame.Objects.Screens;
+using CuteGame.Objects.Scenes;
 using CuteGame.Objects.Things;
 using CuteGame.Objects.Things.Battle.Characters;
 using Microsoft.Xna.Framework;
@@ -110,7 +110,7 @@ namespace CuteGame
             // Resolution and fullscreen
             _graphics.PreferredBackBufferWidth = 1600;
             _graphics.PreferredBackBufferHeight = 900;
-            _graphics.ToggleFullScreen();
+            //_graphics.ToggleFullScreen();
 
             // camera?
             camera = new Camera(GraphicsDevice.Viewport);
@@ -118,6 +118,8 @@ namespace CuteGame
 
 
             // Create sample player
+
+            
             SceneBattle sceneBattle = new SceneBattle(this);
             sceneBattle.listEnemies = new List<BattleCharacter>()
             {
@@ -131,6 +133,10 @@ namespace CuteGame
                 new Knight(this,sceneBattle)
             };
             ChangeScene(sceneBattle);
+           
+
+            Scene scene = new Scene(this, "TestLevel");
+            ChangeScene(scene);
 
 
 

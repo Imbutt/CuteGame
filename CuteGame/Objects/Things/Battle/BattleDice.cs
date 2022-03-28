@@ -19,14 +19,12 @@ namespace CuteGame.Objects.Things.Battle
             this.DiceColor = diceColor;
 
             var fold = this.Game.resourceContainer._Content._Battle._Dice;
-            fold.
             
         }
 
         public void GenerateRandom()
         {
             this.Game._random.Next(1, 6);
-
         }
     }
 }

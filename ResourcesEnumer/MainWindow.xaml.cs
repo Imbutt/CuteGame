@@ -166,7 +166,6 @@ namespace ResourcesEnumer
                 int SubDirsClassIndex = lines.IndexOf(subdirString) + subdirString.Length + 1;
 
                 // Write in FoldersList
-                foldersListString += 
 
                 // Prepare class template and insert it
 

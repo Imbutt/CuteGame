@@ -1,4 +1,4 @@
-﻿using CuteGame.Objects.Screens;
+﻿using CuteGame.Objects.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Text;

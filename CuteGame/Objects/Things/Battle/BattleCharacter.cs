@@ -1,4 +1,4 @@
-﻿using CuteGame.Objects.Screens;
+﻿using CuteGame.Objects.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;

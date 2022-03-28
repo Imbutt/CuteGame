@@ -18,7 +18,7 @@ namespace ThingLister
                 root += args[i];
             }
 
-            string thingsFolder = root + @"\CuteGame\Objects\Things";
+            string thingsFolder = root + @"\CuteGame\Objects";
 
             // Get all files and subdirectories paths
             List<string> filesList = new List<string>();

@@ -30,9 +30,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Objects\Sprites\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MonoGame-LDtk-Importer\MonoGame LDtk Importer\MonoGame LDtk Importer.csproj" />
     <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj" />
   </ItemGroup>
